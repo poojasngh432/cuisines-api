@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     name: "North Indian",
-    dishes: ["Butter Chicken", "Rogan Josh", "Paneer Tikka"]
+    dishes: ["Butter Chicken", "Rogan Josh", "Paneer Tikka", "Samosa"]
   },
   {
     name: "Korean",
