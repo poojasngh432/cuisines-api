@@ -32,9 +32,16 @@ app.get('/cuisines', async (req, res) => {
   res.json(cuisines);
 });
 
-app.get('/cuisine/:name', async (req, res) => {
-  const cuisine = await Cuisine.findOne({ name: req.params.name });
-  res.json(cuisine);
+app.get('/cuisine/:id/dishes', async (req, res) => {
+  try {
+    const cuisine = await Cuisine.findById(req.params.id);
+    if (!cuisine) {
+      return res.status(404).json({ error: 'Cuisine not found' });
+    }
+    res.json(cuisine.dishes);
+  } catch (error) {
+    res.status(500).json({ error: 'Invalid ID format or server error' });
+  }
 });
 
 app.get('/surprise', async (req, res) => {
