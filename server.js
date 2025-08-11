@@ -32,7 +32,7 @@ app.get('/cuisines', async (req, res) => {
   res.json(cuisines);
 });
 
-app.get('/cuisine/:id/dishes', async (req, res) => {
+app.get('/cuisines/:id/dishes', async (req, res) => {
   try {
     const cuisine = await Cuisine.findById(req.params.id);
     if (!cuisine) {
