@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
   await Cuisine.deleteMany({});
   await Cuisine.insertMany(cuisinesData);
   console.log('Sample cuisines refreshed');
+  console.log('Inserted data:', cuisinesData);
 })
 .catch(err => console.error(err));
 
