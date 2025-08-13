@@ -18,9 +18,10 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(async () => {
   console.log('MongoDB connected');
 
-  // Refresh the collection every time the server starts (development mode)
-  await Cuisine.deleteMany({});
-  await Cuisine.insertMany(cuisinesData);
+  const count = await Cuisine.countDocuments();
+  if (count === 0) {
+    await Cuisine.insertMany(cuisinesData);
+  }
   console.log('Sample cuisines refreshed');
   console.log('Inserted data:', cuisinesData);
 })
